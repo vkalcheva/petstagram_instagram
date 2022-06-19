@@ -5,6 +5,7 @@ from django.db import models
 
 UserModel = get_user_model()
 
+
 class Pet(models.Model):
     CAT = 'Cat'
     DOG = 'Dog'

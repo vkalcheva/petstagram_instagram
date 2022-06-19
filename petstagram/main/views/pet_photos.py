@@ -42,6 +42,15 @@ class CreatePetPhotoView(auth_mixin.LoginRequiredMixin, views.CreateView):
         return super().form_valid(form)
 
 
+class EditPetPhotoView(views.UpdateView):
+    model = PetPhoto
+    template_name = 'main/photo_edit.html'
+    fields = ('description',)
+
+    def get_success_url(self):
+        return reverse_lazy('pet photo details', kwargs ={'pk': self.object.id})
+
+
 def like_pet_photo(request, pk):
     pet_photo = PetPhoto.objects.get(pk=pk)
     pet_photo.likes += 1
@@ -53,5 +62,5 @@ def like_pet_photo(request, pk):
 #     return render(request, 'main/photo_create.html')
 
 
-def edit_pet_photo(request):
-    return render(request, 'main/photo_edit.html')
+# def edit_pet_photo(request):
+#     return render(request, 'main/photo_edit.html')

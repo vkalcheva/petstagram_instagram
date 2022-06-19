@@ -15,7 +15,7 @@ class UserRegisterView(RedirectToDashboard, views.CreateView):
 
 
 class UserLoginView(auth_view.LoginView):
-    template_name = 'accounts/login_page.html'
+    template_name = 'accounts/change_password_page.html'
     success_url = reverse_lazy('dashboard')
 
     def get_success_url(self):
@@ -28,8 +28,8 @@ class EditProfileView:
     pass
 
 
-class ChangeUserPasswordView:
-    pass
+class ChangeUserPasswordView(auth_view.PasswordChangeView):
+    template_name = 'accounts/change_password_page.html'
 
 
 class ProfileDetailsView(views.DetailView):
